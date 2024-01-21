@@ -13,6 +13,6 @@ public interface EmployeeService {
 
     EmployeeDTO updateEmployee(Integer id, EmployeeDTO employeeDTO);
 
-    // EmployeeDTO deleteEmployee(Integer id);
+    EmployeeDTO deleteEmployee(Integer id);
 
 }

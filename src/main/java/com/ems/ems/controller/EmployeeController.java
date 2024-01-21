@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ems.ems.dto.EmployeeDTO;
+import com.ems.ems.exception.ApiResponse;
 import com.ems.ems.exception.ResourceNotFoundException;
 import com.ems.ems.service.EmployeeService;
 
@@ -71,10 +73,23 @@ public class EmployeeController {
     public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable Integer id, @RequestBody EmployeeDTO employeeDTO) {
         try {
             EmployeeDTO updatedEmployee = employeeService.updateEmployee(id, employeeDTO);
-            
+
             return new ResponseEntity<>(updatedEmployee, HttpStatus.OK);
         } catch (ResourceNotFoundException ex) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @DeleteMapping("/employees/{id}")
+    public ResponseEntity<ApiResponse> deleteEmployee(@PathVariable int id) {
+        try {
+            employeeService.deleteEmployee(id);
+            return ResponseEntity.ok(new ApiResponse("Employee deleted successfully"));
+        } catch (ResourceNotFoundException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiResponse(ex.getMessage()));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ApiResponse("Failed to delete employee"));
         }
     }
 
