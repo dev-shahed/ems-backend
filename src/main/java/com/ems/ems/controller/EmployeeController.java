@@ -1,5 +1,7 @@
 package com.ems.ems.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ems.ems.dto.EmployeeDTO;
+import com.ems.ems.exception.ResourceNotFoundException;
 import com.ems.ems.service.EmployeeService;
 
 import lombok.AllArgsConstructor;
@@ -35,6 +38,16 @@ public class EmployeeController {
     public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable Integer id) {
         EmployeeDTO theEmployee = employeeService.getEmployeeById(id);
         return new ResponseEntity<>(theEmployee, HttpStatus.OK);
+    }
+
+    @GetMapping("/employees")
+    public ResponseEntity<?> getAllEmployee() {
+        try {
+            List<EmployeeDTO> AllEmployees = employeeService.getAllEmployee();
+            return new ResponseEntity<>(AllEmployees, HttpStatus.OK);
+        } catch (ResourceNotFoundException ex) {
+            return new ResponseEntity<>(ex.getErrorResponse(), HttpStatus.NOT_FOUND);
+        }
     }
 
 }
