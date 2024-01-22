@@ -43,7 +43,7 @@ Data Transfer Objects used to transfer data between layers.
 - Spring MVC
 - Spring Data JPA
 - MYSQL
-- H2 Database (for development, replace with your production database)
+- H2 Database (for development)
 
 ## How to Run
 
