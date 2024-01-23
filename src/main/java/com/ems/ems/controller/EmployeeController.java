@@ -24,10 +24,10 @@ import com.ems.ems.service.EmployeeService;
 
 import lombok.AllArgsConstructor;
 
-@CrossOrigin("*")
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api")
+@CrossOrigin("*")
 public class EmployeeController {
     private EmployeeService employeeService;
 
