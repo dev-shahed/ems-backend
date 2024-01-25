@@ -43,6 +43,9 @@ public class DepartmentController {
         return ResponseEntity.created(location).body(createdDepartment);
     }
 
+    /**
+     * @return all departments
+     */
     @GetMapping()
     public ResponseEntity<?> gettingDepartments() {
         try {
