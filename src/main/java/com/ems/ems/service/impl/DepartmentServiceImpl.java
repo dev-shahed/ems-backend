@@ -17,7 +17,6 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class DepartmentServiceImpl implements DepartmentService {
-    // TODO: implement methods of the interface, add validation and error handling
     private DepartmentRepository departmentRepository;
 
     @Override
@@ -34,6 +33,33 @@ public class DepartmentServiceImpl implements DepartmentService {
             throw new ResourceNotFoundException("No department exists!");
         }
         return departments.stream().map(DepartmentMapper::mapToDepartmentDTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public DepartmentDTO getDepartmentById(Integer id) {
+        Department theDepartment = departmentRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Department doesn't exist!"));
+        return DepartmentMapper.mapToDepartmentDTO(theDepartment);
+    }
+
+    @Override
+    public DepartmentDTO deleteDepartment(Integer id) {
+        Department theDep = departmentRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Department doesn't exist!"));
+        departmentRepository.deleteById(id);
+        return DepartmentMapper.mapToDepartmentDTO(theDep);
+    }
+
+    @Override
+    public DepartmentDTO updateDepartment(Integer id, DepartmentDTO departmentDTO) {
+        Department theDep = departmentRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Department doesn't exist!"));
+        if (theDep != null) {
+            theDep.setName(departmentDTO.getName());
+            theDep.setDescription(departmentDTO.getDescription());
+        }
+        departmentRepository.save(theDep);
+        return DepartmentMapper.mapToDepartmentDTO(theDep);
     }
 
 }
