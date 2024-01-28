@@ -36,14 +36,14 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public DepartmentDTO getDepartmentById(Integer id) {
+    public DepartmentDTO getDepartmentById(Long id) {
         Department theDepartment = departmentRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Department doesn't exist!"));
         return DepartmentMapper.mapToDepartmentDTO(theDepartment);
     }
 
     @Override
-    public DepartmentDTO deleteDepartment(Integer id) {
+    public DepartmentDTO deleteDepartment(Long id) {
         Department theDep = departmentRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Department doesn't exist!"));
         departmentRepository.deleteById(id);
@@ -51,7 +51,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public DepartmentDTO updateDepartment(Integer id, DepartmentDTO departmentDTO) {
+    public DepartmentDTO updateDepartment(Long id, DepartmentDTO departmentDTO) {
         Department theDep = departmentRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Department doesn't exist!"));
         if (theDep != null) {

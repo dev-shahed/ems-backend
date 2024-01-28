@@ -65,7 +65,7 @@ public class DepartmentController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<?> gettingDepartmentById(@PathVariable Integer id) {
+    public ResponseEntity<?> gettingDepartmentById(@PathVariable Long id) {
         try {
             DepartmentDTO department = departmentService.getDepartmentById(id);
             return new ResponseEntity<>(department, HttpStatus.OK);
@@ -75,7 +75,7 @@ public class DepartmentController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<ApiResponse> delettingDepartment(@PathVariable Integer id) {
+    public ResponseEntity<ApiResponse> delettingDepartment(@PathVariable Long id) {
         try {
             departmentService.deleteDepartment(id);
             return ResponseEntity.ok(new ApiResponse("Department Deleted Successfully."));
@@ -88,7 +88,7 @@ public class DepartmentController {
 
     // update Department.
     @PutMapping("{id}")
-    public ResponseEntity<DepartmentDTO> updatingDepartment(@PathVariable Integer id,
+    public ResponseEntity<DepartmentDTO> updatingDepartment(@PathVariable Long id,
             @RequestBody DepartmentDTO departmentDTO) {
         try {
             DepartmentDTO updatedDep = departmentService.updateDepartment(id, departmentDTO);

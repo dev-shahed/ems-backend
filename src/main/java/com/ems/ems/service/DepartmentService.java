@@ -9,9 +9,9 @@ public interface DepartmentService {
 
     List<DepartmentDTO> getAllDepartment();
 
-    DepartmentDTO getDepartmentById(Integer id);
+    DepartmentDTO getDepartmentById(Long id);
 
-    DepartmentDTO deleteDepartment(Integer id);
+    DepartmentDTO deleteDepartment(Long id);
 
-    DepartmentDTO updateDepartment(Integer id, DepartmentDTO departmentDTO);
+    DepartmentDTO updateDepartment(Long id, DepartmentDTO departmentDTO);
 }

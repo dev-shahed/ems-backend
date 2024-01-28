@@ -52,7 +52,7 @@ public class EmployeeController {
     }
 
     @GetMapping("employees/{id}")
-    public ResponseEntity<?> getEmployeeById(@PathVariable Integer id) {
+    public ResponseEntity<?> getEmployeeById(@PathVariable Long id) {
         try {
             EmployeeDTO theEmployee = employeeService.getEmployeeById(id);
             return new ResponseEntity<>(theEmployee, HttpStatus.OK);
@@ -72,7 +72,7 @@ public class EmployeeController {
     }
 
     @PutMapping("employees/{id}")
-    public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable Integer id, @RequestBody EmployeeDTO employeeDTO) {
+    public ResponseEntity<EmployeeDTO> updateEmployee(@PathVariable Long id, @RequestBody EmployeeDTO employeeDTO) {
         try {
             EmployeeDTO updatedEmployee = employeeService.updateEmployee(id, employeeDTO);
 
@@ -83,7 +83,7 @@ public class EmployeeController {
     }
 
     @DeleteMapping("/employees/{id}")
-    public ResponseEntity<ApiResponse> deleteEmployee(@PathVariable int id) {
+    public ResponseEntity<ApiResponse> deleteEmployee(@PathVariable Long id) {
         try {
             employeeService.deleteEmployee(id);
             return ResponseEntity.ok(new ApiResponse("Employee deleted successfully"));
