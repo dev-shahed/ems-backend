@@ -4,6 +4,8 @@
 
 The Employee Management System is a Spring Boot project designed to manage employee information efficiently.
 
+[Screencast from 03-26-2024 08:27:26 PM.webm](https://github.com/dev-shahed/ems-frontend/assets/125728402/9e94e4c1-bfc9-4ca0-9b6c-1086f0e6bc99)
+
 ## Project Structure
 
 The project follows a standard Spring Boot structure:
