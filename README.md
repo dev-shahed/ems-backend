@@ -1,8 +1,7 @@
-# Employee Management System
+# 🧑‍💼 Employee Management System
 
-## Overview
+The **Employee Management System** is a simple system that allows users to manage departments and employees within an organization. Each employee is assigned to a specific department, and departments can have multiple employees.
 
-The Employee Management System is a Spring Boot project designed to manage employee information efficiently.
 
 [Screencast from 03-26-2024 08:27:26 PM.webm](https://github.com/dev-shahed/ems-frontend/assets/125728402/9e94e4c1-bfc9-4ca0-9b6c-1086f0e6bc99)
 
@@ -60,6 +59,37 @@ You can configure the application properties in the `application.properties` fil
 ## Contributing
 
 Feel free to contribute by opening issues or submitting pull requests.
+
+
+---
+
+## ✨ Features
+
+- Add new Departments through the **Add Department** section
+- Add new Employees through the **Add Employee** section
+- Each employee must be assigned to one department
+- View the system structure via a clear ER diagram
+
+---
+
+## 🗺️ System Diagram
+
+```mermaid
+erDiagram
+    DEPARTMENT ||--o{ EMPLOYEE : has
+
+    DEPARTMENT {
+        int id PK
+        string name
+    }
+
+    EMPLOYEE {
+        int id PK
+        string firstName
+        string lastName
+        string email
+        int departmentId FK
+    }
 
 ## License
 
