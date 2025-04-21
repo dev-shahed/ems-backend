@@ -74,22 +74,7 @@ Feel free to contribute by opening issues or submitting pull requests.
 
 ## 🗺️ System Diagram
 
-```mermaid
-erDiagram
-    DEPARTMENT ||--o{ EMPLOYEE : has
-
-    DEPARTMENT {
-        int id PK
-        string name
-    }
-
-    EMPLOYEE {
-        int id PK
-        string firstName
-        string lastName
-        string email
-        int departmentId FK
-    }
+![image](https://github.com/user-attachments/assets/36403cb0-81c8-45f8-8d10-60bae30dd7f1)
 
 ## License
 
